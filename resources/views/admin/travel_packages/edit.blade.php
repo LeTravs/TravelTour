@@ -52,7 +52,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-center" colspan="4">Gallery Kosong</td>
+                                        <td class="text-center" colspan="4">Image</td>
                                     </tr>
                                 @endforelse
                                 </tbody>
@@ -131,7 +131,6 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
         .create( document.querySelector( '#description' ) )

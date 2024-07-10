@@ -13,7 +13,7 @@ class GuestLoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('guest.login'); // Ensure this view exists for login form
+        return view('guest.login'); 
     }
 
     public function login(Request $request)

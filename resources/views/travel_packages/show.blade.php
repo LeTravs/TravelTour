@@ -56,6 +56,8 @@
                  {{ session('message') }}
                </div>
              @endif
+
+             @auth
              <form action="{{ route('booking.store') }}" method="post" class="booking-form">
                @csrf 
                <input type="hidden" name="travel_package_id" value="{{ $travel_package->id }}">
@@ -123,6 +125,11 @@
                <div class="price-display" id="price-display"></div>
                <button type="submit">Submit Booking</button>
              </form>
+             @endauth
+
+             @guest
+             <p>Please <a href="{{ route('login') }}">log in</a> to book a travel package.</p>
+             @endguest
            </div>
          </div>
      </div>

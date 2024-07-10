@@ -28,26 +28,37 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                    {{ Auth::user()->name }}
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px;">
-                    <a href="{{ route('admin.profile.show') }}" class="dropdown-item">
-                        <i class="mr-2 fas fa-file"></i>
-                        {{ __('My profile') }}
+            @auth
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                        {{ Auth::user()->name }}
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a href="{{ route('logout') }}" class="dropdown-item"
-                           onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i class="mr-2 fas fa-sign-out-alt"></i>
-                            {{ __('Log Out') }}
+                    <div class="dropdown-menu dropdown-menu-right" style="left: inherit; right: 0px;">
+                        <a href="{{ route('admin.profile.show') }}" class="dropdown-item">
+                            <i class="mr-2 fas fa-file"></i>
+                            {{ __('My profile') }}
                         </a>
-                    </form>
-                </div>
-            </li>
+                        <div class="dropdown-divider"></div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}" class="dropdown-item"
+                               onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="mr-2 fas fa-sign-out-alt"></i>
+                                {{ __('Log Out') }}
+                            </a>
+                        </form>
+                    </div>
+                </li>
+            @endauth
+
+            @guest
+                <li class="nav-item">
+                    <a href="{{ route('login') }}" class="nav-link">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('register') }}" class="nav-link">{{ __('Register') }}</a>
+                </li>
+            @endguest
         </ul>
     </nav>
     <!-- /.navbar -->
